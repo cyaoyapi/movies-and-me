@@ -25,8 +25,9 @@ export default class Search extends React.Component {
     this.totalPages = 0
     this.setState({
       films: []
+    }, () => {
+      this._loadFilms()
     })
-    this._loadFilms()
   }
 
   _loadFilms() {
