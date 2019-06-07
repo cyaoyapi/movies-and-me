@@ -5,9 +5,9 @@ const initialeState = {
 export default function toggleFavorite(state = initialeState, action) {
   let nextState
   switch (action.type) {
-    case 'TOGGLE_FAVORITE':
+    case "TOOGLE_FAVORITE":
       const favoriteFilmIndex = state.favoriteFilms.findIndex(item => item.id === action.value.id)
-      if(favoriteFilmIndex !== 1) {
+      if(favoriteFilmIndex !== -1) {
         nextState = {
           ...state,
           favoriteFilms: state.favoriteFilms.filter((item, index) => index !== favoriteFilmIndex)
