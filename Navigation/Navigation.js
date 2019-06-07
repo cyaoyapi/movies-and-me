@@ -1,6 +1,9 @@
-import { createStackNavigator, createAppContainer } from 'react-navigation'
+import React from 'react'
+import { Image, StyleSheet } from 'react-native'
+import { createStackNavigator, createAppContainer, createBottomTabNavigator } from 'react-navigation'
 import Search from '../Components/Search'
 import FilmDetail from '../Components/FilmDetail'
+import Favorites from '../Components/Favorites'
 
 const SearchStackNavigator = createStackNavigator({
     Search: {
@@ -14,4 +17,44 @@ const SearchStackNavigator = createStackNavigator({
     }
   })
 
-export default createAppContainer(SearchStackNavigator)
+const MoviesTabNavigator = createBottomTabNavigator({
+  Search: {
+    screen: SearchStackNavigator,
+    navigationOptions: {
+      tabBarIcon: () => {
+        return <Image
+          style={styles.icon}
+          source={require('../Images/ic_search.png')}
+        />
+      }
+    }
+  },
+  Favorites: {
+    screen: Favorites,
+    navigationOptions: {
+      tabBarIcon: () => {
+        return <Image
+          style={styles.icon}
+          source={require('../Images/ic_favorite.png')}
+        />
+      }
+    }
+  }
+},
+  {
+    tabBarOptions: {
+      activeBackgroundColor: '#DDDDDD',
+      inactiveBackgroundColor: '#FFFFFF',
+      showLabel: false,
+      showIcon: true
+    }
+})
+
+const syles = StyleSheet.create({
+  icon: {
+    width: 20,
+    height: 20
+  }
+})
+
+export default createAppContainer(MoviesTabNavigator)

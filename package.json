@@ -13,7 +13,7 @@
     "react": "^16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "react-navigation": "^3.11.0",
-    "react-redux": "^6.0.1",
+    "react-redux": "^5.1.1",
     "redux": "^4.0.1",
     "redux-connect-decorator": "^0.2.1"
   },

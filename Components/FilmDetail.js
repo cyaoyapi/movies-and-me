@@ -27,8 +27,7 @@ class FilmDetail extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log("Updating...")
-    console.log("------------------")
+    console.log("====Updating====")
     console.log(this.props.favoriteFilms)
   }
 
@@ -95,9 +94,6 @@ class FilmDetail extends React.Component {
     }
   }
 
-
-
-
   render() {
     return (
       <View style={styles.main_container}>
@@ -108,15 +104,6 @@ class FilmDetail extends React.Component {
   }
 
 }
-
-const mapStateToProps = (state) => {
-  return {
-    favoriteFilms: state.favoriteFilms
-  }
-}
-
-
-export default connect(mapStateToProps)(FilmDetail)
 
 
 const styles = StyleSheet.create({
@@ -170,3 +157,12 @@ const styles = StyleSheet.create({
     height: 40
   }
 })
+
+const mapStateToProps = (state) => {
+  return {
+    favoriteFilms: state.favoriteFilms
+  }
+}
+
+
+export default connect(mapStateToProps)(FilmDetail)
