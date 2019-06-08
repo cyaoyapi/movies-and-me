@@ -12,11 +12,21 @@ class FilmDetail extends React.Component {
     super(props)
     this.state = {
       film: undefined,
-      isLoading: true
+      isLoading: false
     }
   }
 
   componentDidMount() {
+    const favoriteFilmIndex = this.props.favoriteFilms.findIndex(item => item.id === this.props.navigation.state.params.idFilm)
+    if(favoriteFilmIndex !== -1) {
+      this.setState({
+        film: this.props.favoriteFilms[favoriteFilmIndex]
+      })
+      return
+    }
+    this.setState({
+      isLoading: true
+    })
     getFilmDetailFromApi(this.props.navigation.state.params.idFilm)
       .then(data => {
         this.setState({
@@ -26,10 +36,7 @@ class FilmDetail extends React.Component {
       })
   }
 
-  componentDidUpdate() {
-    console.log("====Updating====")
-    console.log(this.props.favoriteFilms)
-  }
+  
 
   _toggleFavorite() {
     const action = {
@@ -41,7 +48,6 @@ class FilmDetail extends React.Component {
 
   _displayFavoriteImage() {
     var sourceImage = require('../Images/ic_favorite_border.png')
-    console.log(this.props.favoriteFilms)
     if(this.props.favoriteFilms.findIndex(item => item.id === this.state.film.id) !== -1) {
       sourceImage = require('../Images/ic_favorite.png')
     }
